@@ -1,0 +1,32 @@
+<!--pages/user/index.wxml-->
+<view class="title_bgd"></view>
+<view class="user_box">
+  <view class="user_img">
+     <van-uploader file-list="{{ userimgList }}" max-count="1" bind:delete="deleteUserImg" bind:after-read="afterRead" >
+       <image src="{{userimg}}" class="image"></image>
+     </van-uploader>
+  </view>
+  <view class="form_box">
+    <form catchsubmit="formSubmit">
+        <view class="input_user">
+          <view>姓名：</view>
+          <input name="username" value="{{username}}" placeholder="请输入姓名" />
+        </view>
+        <view class="input_user">
+          <view>手机号：</view>
+          <input name="mobile" value="{{mobile}}" type="number" placeholder="请输入手机号" />
+        </view>
+        <view class="input_user">
+          <view>原密码：</view>
+          <input name="userpassword" password placeholder="请输入原密码" />
+        </view>
+        <view class="input_user">
+          <view>新密码：</view>
+          <input name="password" password placeholder="请输入新密码" />
+        </view>
+        <button formType="submit" class="user_btn">确认修改</button>
+        <view class="quit" bindtap="outLogin">退出当前登录</view>
+    </form>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

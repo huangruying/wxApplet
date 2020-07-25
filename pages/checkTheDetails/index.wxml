@@ -1,0 +1,37 @@
+<!--pages/checkTheDetails/index.wxml-->
+<view class="details">
+  <view class="node_name">{{ dotabbreviation }}</view>
+  <view class="details_title">
+    <view class="left" bindtap="subClick" data-sub="{{ subMonth }}"><icon class="iconfont icon-zuojiantou icon"></icon> {{ subMonth }}月</view>
+    <view>{{ year }}年{{ month }}月</view>
+    <view class="right" bindtap="addClick" data-add="{{ addMonth }}">{{ addMonth }}月 <icon class="iconfont icon-youjiantou icon"></icon></view>
+  </view>
+  <view class="shadow">
+    <view class="centre">
+      <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/zoji.png"></image>
+      <view class="money">¥ {{ totalPrice }}</view>
+      <view class="money_text">此月账单总计</view>
+      <!-- <view class="money_btn" bindtap="confirm" wx:if="{{ status }}">对账确认</view>
+      <view wx:else class="btn_text">{{ text }}</view> -->
+    </view>
+    <view class="tabs">
+      <view>时间</view>
+      <view>车牌</view>
+      <view>服务</view>
+      <view>金额</view>
+    </view>
+    <view class="details_date">
+        <view class="date_text" wx:for="{{ dataList }}" wx:key="*this">
+           <view class="text_date">{{ item.createTime }}</view>
+           <view class="text_num">{{ item.licensePlate }}</view>
+           <view class="text_utf">{{ item.dotsType }}</view>
+           <view class="text_price">{{ item.price }}</view>
+        </view>
+        <view wx:if="{{ loading }}" class="node_data date_text">
+          <van-loading type="spinner" color="#1989fa">加载中...</van-loading>
+        </view>
+        <view class="node_data date_text" wx:if="{{ nodeData }}">没有更多了~</view>
+    </view>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

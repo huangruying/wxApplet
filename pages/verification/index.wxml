@@ -1,0 +1,37 @@
+<!--pages/index/index.wxml-->
+<view class="item_index">
+    <view class="merchant_name">{{ username }}</view>
+    <!-- <view class="merchant_name2"> {{ dotAbbreviation }} </view> -->
+   <image src="{{ storeImages }}"></image>
+   <view class="dropdown_box2">
+      <van-dropdown-menu>
+        <van-dropdown-item value="{{ dotId }}" title="请选择网点名称" options="{{ option }}" id="dotNameItem" bind:change="changeDropdown" />
+      </van-dropdown-menu>
+      <input class="input_" name="dotName" value="{{dotName}}" placeholder="请输入网点名称" bindinput="getInputDotName" bindfocus="getInputDotName" />
+    </view>
+   <view class="input_code">
+     <van-field class="code" required value="{{ redeemCode }}" label="券码" placeholder="请输入券码或打开扫一扫识别券码" title-width="90rpx" bindinput="inputCode" />
+     <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/sys.png" bindtap="scanCode"></image>
+   </view>
+   <view class="input_plate">
+     <van-field value="{{ plateNumber }}" label="车牌" placeholder="请输入车牌号" title-width="80rpx" bindinput="inputNumber" />
+     <view class="icon_show">
+        <view bindtap="platePopup">{{ plate }}</view>
+        <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/sjx.png"></image>
+     </view>
+   </view>
+   <van-field value="{{ phone }}" label="手机" placeholder="请输入车主手机" title-width="90rpx" bindinput="inputPhone" />
+   <van-field value="{{ userName }}" label="名字" placeholder="请输入车主名字" title-width="90rpx" bindinput="inputUserName" />
+   <view class="plate_btn" bindtap="submit">确认核销</view>
+</view>
+
+<van-dialog id="van-dialog" />
+<van-popup show="{{ showPopup }}" position="bottom" bind:click-overlay="onCancel">
+  <van-picker
+    show-toolbar
+    title="请选择车牌"
+    columns="{{ columns }}"
+    bind:cancel="onCancel"
+    bind:confirm="onConfirm"
+  />
+</van-popup>

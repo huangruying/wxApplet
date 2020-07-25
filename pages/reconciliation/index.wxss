@@ -1,0 +1,111 @@
+page{
+  background-color: #f5f5f5;
+}
+.vant_box{
+  display: flex;
+  align-items: center;
+}
+.dropdown_box.dropdown_box2 .van-dropdown-menu__title{
+  opacity: 0.8;
+}
+.vant_box >view{
+  width: 50%;
+}
+.dropdown_box{
+  /* padding: 0 14rpx 20rpx; */
+  position: relative;
+}
+.dropdown_box .van-popup--top{
+  width: 88%;
+  left: 6%;
+  border-radius: 0rpx 0rpx 10rpx 10rpx;
+}
+.dropdown_box .van-dropdown-menu__title{
+  margin-left: -28rpx;
+  color: #000;
+  /* opacity: 0.6; */
+  opacity: 0;
+}
+.dropdown_box .van-dropdown-menu__item{
+  width: 201rpx;
+  height: 77rpx;
+  border: 1rpx solid #B0B0B0;
+  color: #B0B0B0;
+  text-align: center;
+  margin: 7rpx;
+  border-radius: 6rpx;
+}
+.dropdown_box .input_{
+  position: absolute;
+  left: 6%;
+  top: 0;
+  width: 88%;
+  height: 77rpx;
+  border-radius: 0rpx 0rpx 10rpx 10rpx;
+  color: #666;
+  margin: 7rpx;
+  border-radius: 6rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  z-index: 9;
+}
+.node_data{
+  text-align: center;
+  color: #666;
+  justify-content: center !important;
+}
+.reconciliation{
+  padding: 76rpx 40rpx;
+}
+.reconciliation_title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  padding: 30rpx 80rpx 30rpx 35rpx;
+  background-color: #0F8FFF;
+}
+.reconciliation_title .node{
+  width: 130rpx;
+  text-align: center;
+}
+.item{
+  background-color: #fff;
+}
+.item >view{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 36rpx 20rpx 15rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.item >view .btn{
+  width: 146rpx;
+  height: 60rpx;
+  border-radius: 10rpx;
+  color: #fff;
+  background-color: #00C250;
+  text-align: center;
+  line-height: 60rpx;
+}
+.item >view .btn:active{
+  background-color:rgba(0, 0, 0, 10%);
+}
+.item >view .date{
+  color: #999999;
+}
+.item >view .node_name{
+  width: 150rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.item >view .btn_text{
+  width: 146rpx;
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #999999;
+}

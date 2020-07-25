@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-uploader": "@vant/weapp/uploader/index"
+  },
+  "navigationBarTitleText": "个人中心"
+}

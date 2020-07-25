@@ -1,0 +1,211 @@
+<!--pages/newlyNode/index.wxml-->
+<view class="new_node">
+  <view class="edit_node">
+    <view class="{{titleIndex === 0? 'color': ''}}" bindtap="indexTitle" data-index="{{0}}">网点基本信息</view>
+    <view class="{{titleIndex === 1? 'color': ''}}" bindtap="indexTitle" data-index="{{1}}">服务项/银行卡</view>
+    <view class="{{titleIndex === 2? 'color': ''}}" bindtap="indexTitle" data-index="{{2}}">网点相关照片</view>
+  </view>
+  <!-- 第1步 -->
+  <view hidden="{{formHiddenOne}}" class="padding_bottom">
+    <view class="new_node_title" decode>· 网点信息</view>
+    <view class="input_box">
+        <view class="dropdown_box">
+            <van-dropdown-menu>
+              <van-dropdown-item value="{{ provinceId }}" title="{{titlePor}}" disabled options="{{ option1 }}" bind:change="changeProvince" />
+              <van-dropdown-item value="{{ cityId }}" title="{{titleCit}}" disabled options="{{ option2 }}" bind:change="changeCity" />
+              <van-dropdown-item value="{{ regionId }}" title="{{titleReg}}" disabled options="{{ option3 }}" bind:change="changeRegion" />
+            </van-dropdown-menu>
+        </view>
+    </view>
+    <view class="input_content">
+       <form catchsubmit="formSubmitOne">
+          <view class="input_one">
+             <view>网点名称：</view>
+             <input bindinput="alterData1" name="dotName" value="{{ formOne.dotName }}" placeholder="请输入网点名称" />
+          </view>
+          <view class="input_one">
+             <view>网点简称：</view>
+             <input bindinput="alterData2" name="dotAbbreviation" value="{{ formOne.dotAbbreviation }}" placeholder="请输入网点简称" />
+          </view>
+          <view class="input_one">
+             <view>客服电话：</view>
+             <input bindinput="alterData3" name="mobile" value="{{ formOne.mobile }}" placeholder="请输入客服电话" />
+          </view>
+          <view class="input_one">
+             <view>店长/经理姓名：</view>
+             <input bindinput="alterData4" name="shopowner" value="{{ formOne.shopowner }}" placeholder="请输入姓名" />
+          </view>
+          <view class="input_one">
+             <view>店长/经理电话：</view>
+             <input bindinput="alterData5" name="storePhone" value="{{ formOne.storePhone }}" placeholder-style="color:#F76260" placeholder="*该手机号是商家账号" />
+          </view>
+          <view class="input_one">
+             <view>网点详细 地址：</view>
+             <textarea bindinput="alterData6" class="textarea" name="address" value="{{ formOne.address }}" placeholder="请输入网点详细地址" />
+          </view>
+          <view class="input_one">
+             <view>经纬度：</view>
+             <input name="lnglat" disabled value="{{ formOne.lnglat }}" placeholder="请选择经纬度" bindtap="getLnglat"/>
+          </view>
+          <view class="input_one">
+             <view>网点类型：</view>
+             <van-dropdown-menu style="flex: 1;">
+              <van-dropdown-item bind:change="dotChange" value="{{ formOne.dotType }}" title="{{titleDot}}" options="{{ dotList }}" />
+             </van-dropdown-menu>
+          </view>
+          <view class="input_one">
+             <view>所属机构：</view>
+             <van-dropdown-menu style="flex: 1;">
+              <van-dropdown-item bind:change="mechanismChange" value="{{ formOne.mechanismId }}" title="{{titleMec}}" options="{{ mechanismList }}" />
+             </van-dropdown-menu>
+          </view>
+          <view class="input_one">
+             <view>合同到期 时间：</view>
+             <input disabled name="contractTime" value="{{ formOne.contractTime }}" placeholder="请选择合同到期时间" bindtap="contractTimeDate"/>
+          </view>
+          <view class="input_one">
+             <view>营业时间 开始：</view>
+             <input disabled name="businessHours" value="{{ formOne.businessHours }}" placeholder="请选择营业时间 开始" bindtap="clickHours"/>
+          </view>
+          <view class="input_one" style="padding-bottom: 50rpx;">
+             <view>营业时间 结束：</view>
+             <input disabled name="businessHours2" value="{{ formOne.businessHours2 }}" placeholder="请选择营业时间 结束" bindtap="clickHours2"/>
+          </view>
+          <!-- <button class="button_formOne" formType="submit">下一步</button> -->
+       </form>
+    </view>  
+  </view>
+  <!-- 第2步 -->
+  <view hidden="{{formHiddenTwo}}" class="padding_bottom">
+    <view class="new_node_title bor" decode>· 服务项采购价格</view>
+    <van-checkbox-group value="{{ result }}" bind:change="onChangeCheckbox">
+      <view class="serve_box" wx:for="{{priceList}}" wx:key="dtId">
+        <view class="serve_title">{{ item.dotType }}</view>
+        <view class="serve_content" wx:for="{{ item.carwashsTypes }}" wx:for-item="value" wx:key="id" wx:for-index="Vindex">
+           <van-checkbox name="{{ value.id }}" >{{ value.dotsType }} ￥ </van-checkbox>
+           <input name="dotServices" bindinput="inputServices" data-id="{{ value.id }}" value="{{ value.price }}" placeholder="请输入价格" type="digit" />
+        </view>
+      </view>
+    </van-checkbox-group>
+    <view class="new_node_title bor" decode>· 银行账户信息</view>
+    <view class="input_one">
+       <view>户名：</view>
+       <input name="accountName" bindinput="alterData7" value="{{ formTwo.accountName }}" placeholder="请输入户名" />
+    </view>
+    <view class="input_one">
+       <view>账号：</view>
+       <input name="account" bindinput="alterData8" value="{{ formTwo.account }}" placeholder="请输入账号" />
+    </view>
+    <view class="input_one" style="padding-bottom: 25rpx;">
+       <view>开户行：</view>
+       <input name="openingBank" bindinput="alterData9" value="{{ formTwo.openingBank }}" placeholder="请输入开户行" />
+    </view>
+    <!-- <view class="botton_box">
+       <button class="button_formTwo" bindtap="confirmOne">上一步</button>
+       <button class="button_formTwo" bindtap="confirmThree">下一步</button>
+    </view> -->
+  </view>
+  <!-- 第3步 -->
+  <view hidden="{{formHiddenThree}}" class="padding_bottom">
+    <view class="new_node_title" decode>· 网点照片及营业执照</view>
+    <block wx:if="{{storeImages.length === 0}}">
+      <van-uploader file-list="{{ storeImages }}" max-count="4" multiple bind:after-read="afterRead">
+        <view class="figure">
+          <view class="image_box">
+            <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/zndx.png"></image>
+            <view>上传店面形象照片</view>
+          </view>
+        </view>
+      </van-uploader>
+    </block>
+    <block wx:else>
+      <view class="figure">
+        <van-uploader max-count="4" file-list="{{ storeImages }}" multiple bind:delete="deleteStore" bind:after-read="afterRead">
+          <view class="figure_box">
+            <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/zndx.png" class="item_img"></image>
+            <view>上传店面形象照片</view>
+          </view>
+        </van-uploader>
+      </view>
+    </block>
+    <view class="itemimg_box"> 
+      <view>
+        <van-uploader max-count="1" file-list="{{ receptionImage }}"           bind:after-read="afterReadReception" bind:delete="deleteReception" style="margin-right: 16rpx;">
+          <view class="img_box">
+            <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/kaob.png" class="max_img"></image>
+            <view>上传接待室照片</view>
+          </view> 
+        </van-uploader>
+      </view>
+      <view>
+        <van-uploader max-count="1" bind:after-read="afterReadHonor" bind:delete="deleteHonor" file-list="{{ honorImage }}">
+          <view class="img_box">
+            <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/kaob.png" class="max_img"></image>
+            <view>上传其他荣誉照片</view>
+          </view>
+        </van-uploader>
+      </view>
+    </view>
+    <view class="itemimg_box2">
+      <view>
+        <van-uploader max-count="1" file-list="{{ trafficImage }}" bind:after-read="afterReadTraffic" bind:delete="deleteTraffic" style="margin-right: 16rpx;">
+          <view class="img_box">
+            <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/kaob.png" class="max_img"></image>
+            <view>上传交通许可证</view>
+          </view>
+        </van-uploader>
+      </view>
+      <view>
+        <van-uploader max-count="1" file-list="{{ businessImage }}" bind:after-read="afterReadBusiness" bind:delete="deleteBusiness">
+            <view class="img_box">
+              <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/kaob.png" class="max_img"></image>
+              <view>上传工商营业照片</view>
+            </view>
+        </van-uploader>
+      </view>
+    </view>
+    <view class="itemimg_box2" style="margin-top: 20rpx;"> 
+      <van-uploader max-count="1" file-list="{{ constructionImage }}" bind:after-read="afterReadConstruction" bind:delete="deleteConstruction" style="margin-right: 16rpx;">
+        <view class="img_box">
+          <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/kaob.png" class="max_img"></image>
+          <view>上传施工车间照片</view>
+        </view>
+      </van-uploader>
+    </view>
+    <!-- <button class="button_formThree" bindtap="submitForm">提交</button> -->
+  </view>
+</view>
+<button class="button_formThree" bindtap="submitForm">提交</button>
+<!-- 选择合同到期时间 -->
+<van-popup show="{{ popupShow }}" position="bottom" bind:close="onClose">
+   <van-datetime-picker
+      type="date"
+      value="{{ currentDate }}"
+      bind:cancel="onClose"
+      bind:confirm="onDate"
+      min-date="{{ minDate }}"
+      max-date="{{ maxDate }}"
+      formatter="{{ formatter }}"
+      title="选择年月日"
+    />
+</van-popup>
+<!-- 开始营业时间 -->
+<van-popup show="{{ timeShow }}" position="bottom" bind:close="onTimeClose">
+   <van-datetime-picker
+      bind:cancel="onTimeClose"
+      bind:confirm="onTimeHours"
+      type="time"
+      value="{{ timeHours }}"
+      title="选择时间"
+    />
+</van-popup>
+<!-- 结束营业时间 -->
+<van-popup show="{{ time2Show }}" position="bottom" bind:close="onTime2Close">
+   <van-datetime-picker
+      bind:cancel="onTime2Close"
+      bind:confirm="onTimeHours2"
+      type="time"
+      value="{{ timeHours2 }}"
+      title="选择时间"
+    />
+</van-popup>

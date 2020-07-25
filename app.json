@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/index",
+    "pages/newlyNode/index",
+    "pages/lnglat/index",
+    "pages/user/index",
+    "pages/order/index",
+    "pages/reconciliation/index",
+    "pages/checkTheDetails/index",
+    "pages/verification/index",
+    "pages/editNode/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "愉悦商旅",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序定位"
+    }
+  }
+}

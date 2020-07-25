@@ -1,0 +1,16 @@
+<view class="login_index">
+    <view class="title">用户登录</view>
+    <form catchsubmit="formSubmit">
+        <view class="input_img">
+           <input class="input_" name="imgCode" value="{{imgCode}}" maxlength="4" placeholder="请输入图形验证码" bindinput="getInputImgCode"/>
+           <image src="{{ url }}" bind:tap="getImg" id="img"></image>
+        </view>
+        <input class="input_phone" name="phone" value="{{phone}}" type="number" maxlength="11" placeholder="请输入手机号码" bindinput="getInputPhone"/>
+        <input class="input_phone" name="password" value="{{password}}" password type="number" maxlength="11" placeholder="请输入密码" bindinput="getInputPassword"/>
+       <!-- <view class="input_code">
+          <input class="input_" name="code" value="{{code}}" maxlength="6" placeholder="请输入短信验证码" />
+          <van-button type="info" class="btn" bind:tap="getCode">发送验证码</van-button>
+       </view> -->
+       <button class="submit_btn" formType="submit">立即登录</button>
+    </form>
+</view>

@@ -1,0 +1,47 @@
+.login_index{
+  padding: 45rpx;
+}
+.title{
+  padding-left: 25rpx;
+  border-left: 6rpx solid #007AFF;
+  margin-bottom: 30rpx;
+}
+.input_phone{
+  background-color: #F1F2F4;
+  padding: 23rpx 36rpx;
+  border-radius: 15rpx;
+  margin: 11rpx 0;
+}
+.input_{
+  background-color: #F1F2F4;
+  padding: 23rpx 36rpx;
+  border-radius: 15rpx;
+  width: 60%;
+}
+.input_img,.input_code{
+  display: flex;
+  margin: 20rpx 0;
+}
+.input_code .van-button{
+  height: 88rpx;
+  width: 100%;
+  border-radius: 10rpx;
+}
+.input_code .btn{
+  width: 40%;
+}
+.input_img >image{
+  width: 40%;
+  height: 88rpx;
+  border-radius: 10rpx;
+  margin-left: 10rpx;
+}
+.submit_btn{
+  background-color: #1989fa;
+  color: #fff;
+  margin: 30rpx 0;
+  border-radius: 10rpx;
+}
+.submit_btn:active{
+  background-color:rgba(0, 0, 0, 5%);
+}

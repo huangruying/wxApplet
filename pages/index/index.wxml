@@ -1,0 +1,56 @@
+<view class="index">
+   <image src="https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/wt.png"></image>
+   <view class="query_box">
+      <text class="title" decode="{{true}}">•&ensp;查询网点&ensp;•</text>
+      <view class="dropdown_box">
+        <van-dropdown-menu>
+          <van-dropdown-item value="{{ provinceId }}" title="{{titlePor}}" options="{{ option1 }}" bind:change="changeProvince"/>
+          <van-dropdown-item value="{{ cityId }}" title="{{titleCit}}" options="{{ option2 }}" bind:change="changeCity"/>
+          <van-dropdown-item value="{{ regionId }}" title="{{titleReg}}" options="{{ option3 }}" bind:change="changeRegion"/>
+        </van-dropdown-menu>
+      </view>
+      <view class="dropdown_box2">
+        <van-dropdown-menu>
+          <van-dropdown-item value="{{ carwashId }}" title="{{titleCar}}" options="{{ option4 }}" bind:change="changeCarwash"/>
+          <input class="input_phone" name="phone" value="{{phone}}" type="number" maxlength="11" placeholder="请输入手机号码" bindinput="getInputPhone"/>
+        </van-dropdown-menu>
+      </view>
+      <view class="button" bindtap="getDataList">查询</view>
+  </view>
+  <view class="button_new" bindtap="newlyPage">
+    <icon class="icon-21 iconfont"></icon>
+    <view>新增</view>
+  </view>
+  <view class="tabs">
+   <view>网点简称</view>
+   <view>客服电话</view>
+   <view>地址</view>
+  </view>
+  <view class="tabs_content" wx:for="{{ dataList }}" wx:key="dotCode" bindtap="clickNode" data-id="{{ item.id }}" data-dotCode="{{ item.dotCode }}">
+     <view>{{ item.dotAbbreviation }}</view>
+     <view>{{ item.mobile }}</view>
+     <view>{{ item.province + item.city + item.region }} <icon class="iconfont icon-arrowRight-fill"></icon></view>
+  </view>
+  <view wx:if="{{ loading }}" class="tabs_content node_data">
+    <van-loading type="spinner" color="#1989fa">加载中...</van-loading>
+  </view>
+  <view class="node_data tabs_content" wx:if="{{ nodeData }}">没有更多了~</view>
+</view>
+<view class="bottom_tabs"> 
+  <view bindtap="goOrder">
+    <icon class="iconfont icon-icon-"></icon>
+    <view>订单</view>
+  </view>
+  <view bindtap="goReconciliation">
+    <icon class="iconfont icon-duizhang"></icon>
+    <view>对账</view>
+  </view>
+  <view bindtap="goVerification">
+    <icon class="iconfont icon-hexiao"></icon>
+    <view>核销</view>
+  </view>
+  <view bindtap="goUser">
+    <icon class="iconfont icon-tubiaolunkuo-"></icon>
+    <view>我的</view>
+  </view>
+</view>

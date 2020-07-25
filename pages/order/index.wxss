@@ -1,0 +1,133 @@
+/* pages/order/index.wxss */
+.dropdown_box2{
+  padding: 0 14rpx 20rpx;
+  position: relative;
+}
+.dropdown_box2 .van-popup--top{
+  width: 88%;
+  left: 6%;
+  border-radius: 0rpx 0rpx 10rpx 10rpx;
+}
+.dropdown_box2 .van-dropdown-menu__title{
+  margin-left: -28rpx;
+  color: #000;
+  /* opacity: 0.6; */
+  opacity: 0;
+}
+.dropdown_box2 .van-dropdown-menu__item{
+  width: 201rpx;
+  height: 77rpx;
+  border: 1rpx solid #B0B0B0;
+  color: #B0B0B0;
+  text-align: center;
+  margin: 7rpx;
+  border-radius: 6rpx;
+}
+.dropdown_box2 .input_{
+  position: absolute;
+  left: 6%;
+  top: 0;
+  width: 88%;
+  height: 77rpx;
+  border-radius: 0rpx 0rpx 10rpx 10rpx;
+  color: #666;
+  margin: 7rpx;
+  border-radius: 6rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  z-index: 9;
+}
+.order{
+  padding: 45rpx;
+}
+.node_data{
+  text-align: center;
+  color: #666;
+  justify-content: center !important;
+}
+.order_title{
+  display: flex;
+  align-items: center;
+}
+.order_title .input_btn{
+  border: 1px solid #666666;
+  border-radius: 10rpx;
+  height: 82rpx;
+  line-height: 80rpx;
+  padding: 0 16rpx;
+  text-align: center;
+}
+.order_title .text{
+ margin: 0 10rpx;
+}
+.order_title .inquire{
+  width: 120rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  background-color: #0F8FFF;
+  margin-left: 12rpx;
+  flex: 1;
+}
+.explain{
+  font-size: 24rpx;
+  opacity: 0.6;
+  margin: 24rpx 0 20rpx;
+}
+.total_price{
+  font-size: 36rpx;
+  color: #333333;
+  text-align: right;
+  font-size: 550;
+}
+.order_data{
+  box-shadow:0px 6px 18px 0px rgba(27,27,27,0.1);
+  border-radius:20px;
+  margin-top: 34rpx;
+}
+.data_title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 38rpx 53rpx 30rpx 32rpx;
+  background-color: #0F8FFF;
+  color: #fff;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.data_title .data_date{
+  margin-left: 20rpx;
+}
+.details_date{
+  background-color: #fff;
+  border-radius:  0 0 20rpx 20rpx;
+}
+.date_text{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 33rpx 15rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+.date_text .text_date{
+  color: #999999;
+  font-size: 26rpx;
+}
+.date_text .text_num{
+  width: 154rpx;
+}
+.date_text .text_price{
+  width: 100rpx;
+  text-align: left;
+}
+.date_text .text_utf{
+  width: 155rpx;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

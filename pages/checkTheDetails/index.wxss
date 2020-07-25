@@ -1,0 +1,136 @@
+/* pages/checkTheDetails/index.wxss */
+page{
+  background-color: #f5f5f5;
+}
+.node_name{
+  text-align: center;
+  padding: 20rpx;
+  color: #0f8fff;
+}
+.node_data{
+  text-align: center;
+  color: #666;
+  justify-content: center !important;
+}
+.details{
+  padding: 0rpx 40rpx;
+} 
+.text_num{
+  width: 154rpx;
+}
+.details_title{
+  background-color: #0F8FFF;
+  padding: 32rpx  20rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.details_title .left,.details_title .right{
+  font-size: 28rpx;
+}
+.centre{
+  text-align: center;
+  background-color: #fff;
+  padding-bottom: 25rpx;
+  position: relative;
+}
+.centre >image{
+  width: 186rpx;
+  height: 178rpx;
+  margin-top: 39rpx;
+}
+.shadow{
+  box-shadow:0px 6px 18px 0px rgba(27,27,27,0.1);
+  border-radius:  0 0 20rpx 20rpx;
+}
+.centre .money{
+  font-size: 42rpx;
+  font-weight:bold;
+  margin: -9rpx 0 8rpx 0;
+}
+.centre .money_text{
+  color: #999999;
+  font-size: 24rpx;
+  margin-bottom: 32rpx;
+}
+.centre .money_btn{
+  background-color: #0F8FFF;
+  color: #fff;
+  border-radius: 20rpx;
+  width:300rpx;
+  height:90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  margin: 0 auto;
+}
+.centre .money_btn:active{
+  background-color:rgba(0, 0, 0, 5%);
+}
+.centre .btn_text{
+  background-color: #ccc;
+  color: #fff;
+  border-radius: 20rpx;
+  width:300rpx;
+  height:90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  margin: 0 auto;
+}
+.centre::after{
+  content: '';
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  position: absolute;
+  top: -20rpx;
+  left: -20rpx;
+}
+.centre::before{
+  content: '';
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  position: absolute;
+  top: -20rpx;
+  right: -20rpx;
+}
+.tabs{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 38rpx 53rpx 30rpx 32rpx;
+}
+.details_date{
+  background-color: #fff;
+  border-radius:  0 0 20rpx 20rpx;
+}
+.date_text{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 33rpx 15rpx;
+  font-size: 28rpx;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+.date_text .text_date{
+  color: #999999;
+}
+.date_text .text_price{
+  width: 100rpx;
+  text-align: left;
+}
+.date_text .text_utf{
+  width: 155rpx;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}

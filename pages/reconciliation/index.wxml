@@ -1,0 +1,34 @@
+<view class="reconciliation">
+   <view class="vant_box">
+      <view class="dropdown_box">
+        <van-dropdown-menu>
+          <van-dropdown-item value="{{ dotId }}" title="请选择网点名称" options="{{ option }}" id="dotNameItem" bind:change="changeDropdown" />
+        </van-dropdown-menu>
+        <input class="input_" name="dotName" value="{{dotName}}" placeholder="请输入网点名称" bindinput="getInputDotName" bindfocus="getInputDotName" />
+      </view>
+      <view class="dropdown_box dropdown_box2">
+        <van-dropdown-menu>
+          <van-dropdown-item value="{{ stateId }}" title="{{ titleVant }}" options="{{ stateList }}" bind:change="changeState" />
+        </van-dropdown-menu>
+      </view>
+   </view>
+   <view class="reconciliation_title">
+     <text class="node">网点</text>
+     <text>时间</text>
+     <text>金额</text>
+     <text>状态</text>
+   </view>
+   <view class="item">
+      <view wx:for="{{dataList}}" wx:key="id" wx:for-item="i" bindtap="goDetails" data-count="{{ i.month }}" data-servicerId="{{ i.servicerId }}" data-dotAbbreviation="{{ i.dotAbbreviation }}">
+        <view class="node_name">{{ i.dotAbbreviation }}</view>
+        <view class="date">{{ i.month }}</view>
+        <text>{{ i.totalAmount }}</text>
+        <view wx:if="{{ i.status == 0 }}" class="btn">未确认</view>
+        <view wx:else class="btn_text">已确认</view>
+      </view>
+      <view class="node_data" wx:if="{{ nodeData }}">没有更多了~</view>
+      <view wx:if="{{ loading }}" class="node_data">
+        <van-loading type="spinner" color="#1989fa">加载中...</van-loading>
+      </view>
+   </view>
+</view>

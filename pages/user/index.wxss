@@ -1,0 +1,67 @@
+/* pages/user/index.wxss */
+.title_bgd{
+  height: 270rpx;
+  background:linear-gradient(64deg,rgba(66,155,255,1),rgba(45,193,250,1))
+}
+.user_box{
+  width: 80%;
+  margin: -76rpx auto 0;
+  background-color: #fff;
+  border-radius: 16rpx;
+  position: relative;
+}
+.user_img{
+  width:244rpx;
+  height:244rpx;
+  border:4rpx solid rgba(255,255,255,1);
+  border-radius: 50%;
+  margin: auto;
+  position: absolute;
+  top: -84rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.van-uploader__preview-image{
+  width:195rpx !important;
+  height:195rpx !important;
+  border-radius:50%;
+  margin: auto;
+}
+.user_img .image{
+  width:195rpx;
+  height:195rpx;
+  border-radius:50%;
+  margin: auto;
+}
+.form_box{
+  padding: 192rpx 60rpx 0;
+}
+.input_user{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.input_user >view{
+  width: 120rpx;
+}
+.input_user >input{
+  flex: 1;
+  background-color: #F1F2F4;
+  padding: 26rpx 0 26rpx 43rpx;
+  border-radius: 4rpx;
+}
+.user_btn{
+  background-color: #fff;
+  border-radius: 50rpx;
+  border: 1rpx solid #87B8FD;
+  color: #348BF6;
+  margin-top: 70rpx;
+}
+.quit{
+  color: #87B8FD;
+  margin: 40rpx auto;
+  text-align: center;
+}
