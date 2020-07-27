@@ -1,6 +1,6 @@
 /* pages/newlyNode/index.wxss */
 .van-uploader__preview-image{
-  width: 330rpx !important;
+  width: 312rpx !important;
   height: 193rpx !important;
 }
 .edit_node{
@@ -98,22 +98,26 @@
   text-align: center;
   margin: 7rpx;
   border-radius: 6rpx;
+  z-index: 99;
 }
 .dropdown_box .van-dropdown-menu__title{
   margin-left: -28rpx;
   color: #000;
   opacity: 0.6;
+  z-index: 99;
 }
 .van-dropdown-menu__title--active{
   color: #0F8FFF !important;
 }
 .dropdown_box{
   padding: 14rpx;
+  z-index: 99;
 }
 .dropdown_box .van-popup--top{
   width: 88%;
   left: 6%;
   border-radius: 0rpx 0rpx 10rpx 10rpx;
+  z-index: 99;
 }
 .button_formOne{
   width:455rpx;
@@ -232,6 +236,9 @@
   padding: 20rpx 30rpx;
   display: flex;
   align-items: center;
+}
+.dropdown_box .van-dropdown-item{
+  z-index: 99;
 }
 .itemimg_box .van-uploader .van-uploader__preview-image{
   height: 260rpx !important;

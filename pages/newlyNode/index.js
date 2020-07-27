@@ -77,7 +77,8 @@ Page({
     businessImage: [],
     constructionImage: [],
     priceList: [],
-    loadingSubmit: false
+    loadingSubmit: false,
+    textarea: false
   },
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
@@ -187,6 +188,16 @@ Page({
         formHiddenThree: false
       })
     }
+  },
+  openDropdown(){
+    this.setData({
+      textarea: true
+    })
+  },
+  closeDropdown(){
+    this.setData({
+      textarea: false
+    })
   },
   // 提交
   submitForm(e){

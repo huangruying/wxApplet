@@ -306,7 +306,9 @@ Page({
         const dl = res.data
         this.apiCity(dl.provinceId) // 获取市数据
         this.apiRegion(dl.cityId) // 获取区数据
-        this.setServe(dl.dotServices) // 服务项数据处理
+        if(dl.dotServices){
+          this.setServe(dl.dotServices) // 服务项数据处理
+        }
         dl.mechanismId = Number(dl.mechanismId)
         this.data.mechanismList.forEach(v=>{
           if(v.value == dl.mechanismId){

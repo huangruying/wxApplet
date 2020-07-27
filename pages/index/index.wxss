@@ -129,7 +129,7 @@
   justify-content: space-between;
   background-color: #F7F7FA;
   margin-top: 490rpx;
-  padding: 27rpx 168rpx 27rpx 78rpx;
+  padding: 27rpx 168rpx 27rpx 75rpx;
 }
 .tabs_content{
   display: flex;
@@ -138,16 +138,20 @@
   padding: 36rpx 6%;
   border-bottom: 1rpx solid #EEEEEE;
 }
+.tabs_content.statusColor{
+  color: #f00;
+}
 .tabs_content:active{
   background-color: rgba(0, 0, 0, 5%);
 }
 .tabs_content >view{
   opacity:0.8;
   font-size: 24rpx;
-  position: relative;
 }
 .tabs_content >view:nth-child(3){
   width: 245rpx;
+  position: relative;
+  /* display: flex; */
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -155,7 +159,7 @@
   -webkit-box-orient: vertical;
 }
 .tabs_content >view:nth-child(1){
-  width: 200rpx;
+  width: 190rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -166,7 +170,7 @@
   font-size: 24rpx;
   position: absolute;
   right: 0rpx;
-  top: -13rpx;
+  top: -19rpx;
 }
 .bottom_tabs{
   position: fixed;
@@ -176,17 +180,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 130rpx 12rpx;
+  padding: 0 110rpx 12rpx;
   background-color: #fff;
   z-index: 5;
   box-shadow:0px 3px 18px 0px rgba(0, 0, 0, 0.09);
 }
 .bottom_tabs >view{
- display: flex;
- flex-direction: column;
- align-items: center;
- font-size: 24rpx;
- color: #333333;
+  width: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 24rpx;
+  color: #333333;
+}
+.bottom_tabs >view:active{
+  background-color: rgba(0, 0, 0, 5%);
 }
 .bottom_tabs >view >icon{
   font-size: 42rpx;

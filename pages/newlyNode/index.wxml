@@ -28,9 +28,9 @@
     <view class="input_box">
         <view class="dropdown_box">
             <van-dropdown-menu>
-              <van-dropdown-item value="{{ provinceId }}" title="{{titlePor}}" options="{{ option1 }}" bind:change="changeProvince" />
-              <van-dropdown-item value="{{ cityId }}" title="{{titleCit}}" options="{{ option2 }}" bind:change="changeCity" />
-              <van-dropdown-item value="{{ regionId }}" title="{{titleReg}}" options="{{ option3 }}" bind:change="changeRegion" />
+              <van-dropdown-item value="{{ provinceId }}" title="{{titlePor}}" options="{{ option1 }}" bind:change="changeProvince" bind:open="openDropdown" bind:close="closeDropdown" />
+              <van-dropdown-item value="{{ cityId }}" title="{{titleCit}}" options="{{ option2 }}" bind:change="changeCity" bind:open="openDropdown" bind:close="closeDropdown" />
+              <van-dropdown-item value="{{ regionId }}" title="{{titleReg}}" options="{{ option3 }}" bind:change="changeRegion" bind:open="openDropdown" bind:close="closeDropdown" />
             </van-dropdown-menu>
         </view>
     </view>
@@ -58,7 +58,7 @@
           </view>
           <view class="input_one">
              <view>网点详细 地址：</view>
-             <textarea bindinput="alterData6" class="textarea" name="address" value="{{ formOne.address }}" placeholder="请输入网点详细地址" />
+             <textarea bindinput="alterData6" hidden="{{ textarea }}" class="textarea" name="address" value="{{ formOne.address }}" placeholder="请输入网点详细地址" />
           </view>
           <view class="input_one">
              <view>经纬度：</view>

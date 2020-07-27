@@ -63,7 +63,8 @@ Page({
       data.carwashId = this.data.carwashId
     }
     const res = await findDotInfos(data)
-    if(res.data){
+    // console.log(res)
+    if(res.data && res.code == 200){
       res.data.map(v=>{
         v.mobile = v.mobile.slice(0, 3) + "****" + v.mobile.substr(-4, 4)
       })

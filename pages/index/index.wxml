@@ -26,10 +26,10 @@
    <view>客服电话</view>
    <view>地址</view>
   </view>
-  <view class="tabs_content" wx:for="{{ dataList }}" wx:key="dotCode" bindtap="clickNode" data-id="{{ item.id }}" data-dotCode="{{ item.dotCode }}">
+  <view class="tabs_content {{ item.status == 0? 'statusColor': ''}}" wx:for="{{ dataList }}" wx:key="dotCode" bindtap="clickNode" data-id="{{ item.id }}" data-dotCode="{{ item.dotCode }}">
      <view>{{ item.dotAbbreviation }}</view>
      <view>{{ item.mobile }}</view>
-     <view>{{ item.province + item.city + item.region }} <icon class="iconfont icon-arrowRight-fill"></icon></view>
+     <view><view>{{ item.province + item.city + item.region }}</view> <icon class="iconfont icon-arrowRight-fill"></icon></view>
   </view>
   <view wx:if="{{ loading }}" class="tabs_content node_data">
     <van-loading type="spinner" color="#1989fa">加载中...</van-loading>

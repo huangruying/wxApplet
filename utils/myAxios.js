@@ -1,7 +1,6 @@
 // 项目的根路径
-export const baseUrl = 'http://192.168.0.160:8189/yuyuetrip/wash';
-
-// myAxios 函数，params 发请求时传入的参数
+export const baseUrl = 'https://mpmt.yuyuetrip.com.cn/wash';
+// myAxios 函数，params 发请求时传入的参数 fsdf
 export const myAxios = (params) => {
     // 判断参数的 url 是否有 /login/ 路径，如果没有，就在请求的时候，给请求头添加 token
     if (!(params.url.indexOf('/login/') !== -1)) {
@@ -47,6 +46,7 @@ export const myAxios = (params) => {
     // 函数内部返回 Promise 实例
     return new Promise((resolve, reject) => {
         // 对小程序的 request 请求 API 进行封装
+        // console.log(baseUrl + params.url)
         wx.request({
             // 解构所有参数
             ...params,
@@ -61,6 +61,11 @@ export const myAxios = (params) => {
             // 失败
             fail: error => {
                 // 对应 .catch(err=>{})
+                wx.showToast({
+                  title: "服务器炸啦！",
+                  icon: 'none',
+                  duration: 2000
+                })
                 reject(error);
             },
             // 完成 - 不管成功还是失败都触发

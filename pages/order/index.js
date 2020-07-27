@@ -181,10 +181,19 @@ Page({
       }
     })
   },
+  trim(str){ //删除左右两端的空格
+      return str.replace(/(^\s*)|(\s*$)/g, "");
+  },
   getInputDotName(e){
+    const str = this.trim(e.detail.value)
     this.setData({
       dotName: e.detail.value
     })
+    if(!str){
+      this.setData({
+        dotId: ""
+      })
+    }
     this.selectComponent('#dotNameItem').toggle(true) // 打开下拉菜单
     this.test(e.detail.value)
     // this.setDataList(e.detail.value)

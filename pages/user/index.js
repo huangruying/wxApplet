@@ -52,20 +52,25 @@ Page({
     }else if(!myreg.test(mobile)){
       this.toast("手机号格式不正确！")
       return
-    }else if(!password){
-      this.toast("请输入新密码！")
-      return
-    }else if(!userpassword){
-      this.toast("请输入旧密码！")
-      return
     }else if(!username){
       this.toast("请输入姓名！")
       return
     }
+    var obj = {}
+    obj.id = this.data.id
+    obj.username = username
+    obj.mobile = mobile
+    obj.openid = this.data.openId
+    if(userpassword){
+      obj.password = userpassword
+    }
+    if(password){
+      obj.newPassword = password
+    }
     // var _this = this
     Dialog.confirm({
       title: '确认修改?',
-      message: "修改成功后需重新登录。",
+      message: " ",
     })
       .then(() => {
         var length = this.data.userimgList.length-1
@@ -74,28 +79,36 @@ Page({
         }else{
           var pic = this.data.userimg
         }
-        editYyUser({
-          id: this.data.id,
-          username: username,
-          password: userpassword,
-          newPassword: password,
-          pic: pic,
-          mobile: mobile,
-          openid: this.data.openId
-        }).then(res=>{
+        obj.pic = pic
+        editYyUser(obj).then(res=>{
           if(res.code == 200){
             wx.showToast({
               title: "修改成功!",
               duration: 2000
             })
-            wx.removeStorageSync('token')
-            wx.removeStorageSync('username')
-            wx.removeStorageSync('mobile')
-            wx.removeStorageSync('pic')
-            wx.removeStorageSync('id')
-            wx.reLaunch({
-                url: "/pages/login/index"
-            })
+            if(password){
+              wx.removeStorageSync('token')
+              wx.removeStorageSync('username')
+              wx.removeStorageSync('mobile')
+              wx.removeStorageSync('pic')
+              wx.removeStorageSync('id')
+              wx.reLaunch({
+                  url: "/pages/login/index"
+              })
+            }else{
+              wx.setStorage({
+                key: "pic",
+                data: pic
+              })
+              wx.setStorage({
+                key: "mobile",
+                data: mobile
+              })
+              wx.setStorage({
+                key: "username",
+                data: username
+              })
+            }
             // this.onLoad()
           }else{
             wx.showToast({

@@ -18,33 +18,33 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 从本地储存里拿到token
-    const token = wx.getStorageSync('token')
-    // const token = false
-    // 如果有token
-    if(token){
-      wx.reLaunch({
-        url: "/pages/index/index"
-      })
-    }else{
-      var tis = this
-      wx.login({
-        success (res) {
-          if (res.code) {
-            tis.setData({
-              openId: res.code
-            })
-            tis.getImg()
-          } else {
-            wx.showToast({
-              title: '获取openId失败！',
-              icon:"none",
-              duration: 2000
-            })
-          }
-        }
-      })
-    }
+     // 从本地储存里拿到token
+     const token = wx.getStorageSync('token')
+     // const token = false
+     // 如果有token
+     if(token){
+       wx.reLaunch({
+         url: "/pages/index/index"
+       })
+     }else{
+       var tis = this
+       wx.login({
+         success (res) {
+           if (res.code) {
+             tis.setData({
+               openId: res.code
+             })
+             tis.getImg()
+           } else {
+             wx.showToast({
+               title: '获取openId失败！',
+               icon: "none",
+               duration: 2000
+             })
+           }
+         }
+       })
+     }
   },
   getInputPhone(e){
     this.setData({
@@ -66,7 +66,9 @@ Page({
     // const res = await codoYzm({openid: this.data.openId})
     this.setData({
       url: baseUrl  + "/marketing/login/generateCodeImg" + "?date=" +new Date().valueOf() + "&openid=" + this.data.openId
+      // url: baseUrl  + "/marketing/login/generateCodeImg" + "?date=" +new Date().valueOf()
     })
+    // this.onLoad()
   },
   // 登录
   async formSubmit(e) {
@@ -155,6 +157,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.hideHomeButton()
+    // if(wx.canIUse('hideHomeButton')){
+    //   wx.hideHomeButton()
+    // }
+    // wx.hideHomeButton()
   },
 })

@@ -4,7 +4,7 @@
   background:linear-gradient(64deg,rgba(66,155,255,1),rgba(45,193,250,1))
 }
 .user_box{
-  width: 80%;
+  width: 100%;
   margin: -76rpx auto 0;
   background-color: #fff;
   border-radius: 16rpx;
@@ -45,7 +45,7 @@
   margin-bottom: 30rpx;
 }
 .input_user >view{
-  width: 120rpx;
+  width: 158rpx;
 }
 .input_user >input{
   flex: 1;
