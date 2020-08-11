@@ -129,7 +129,7 @@
   justify-content: space-between;
   background-color: #F7F7FA;
   margin-top: 490rpx;
-  padding: 27rpx 168rpx 27rpx 75rpx;
+  padding: 27rpx 168rpx 27rpx 50rpx;
 }
 .tabs_content{
   display: flex;

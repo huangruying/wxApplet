@@ -1,8 +1,11 @@
 // pages/newlyNode/index.js
+var app = getApp();
 import { findYuyueProvinces, findYuyueCityByProvinceid, findYuyueAreasByCityid } from '../../api/index'
-import { findMechanismName, findCarwashTypesInfos, saveDot } from '../../api/newlyNode'
+import { findMechanismName, findCarwashTypesInfos, saveDot , getProvinceCityArea } from '../../api/newlyNode'
 import formatTime from '../../utils/formatTime'
 import { baseUrl } from '../../utils/myAxios'
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+var qqmapsdk;
 Page({
   data: {
     formHiddenOne: false,
@@ -85,6 +88,56 @@ Page({
     this.apiProvince() 
     this.apiFindMechanismName()
     this.apiFindCarwashTypesInfos()
+    this.location()
+  },
+  location(){
+    let self =this;
+    self.mapCtx = wx.createMapContext('myMap')
+    qqmapsdk = new QQMapWX({
+      // key: 'W57BZ-JDB6X-XPA4H-Z76MI-73FF2-24BT4' // 别人的
+      key: 'HDABZ-LST33-YMD3M-3QYQI-FAG66-LRFR6' // 老衲的
+      // key: 'GTKBZ-FJO3P-CCEDI-LI3OB-3GJ2K-SHFDS' // 凯哥的
+      // key: 'UTOBZ-5TZH6-BSHSG-MRKO7-7REOQ-B2B5V' // 凯哥企业端的
+    });
+    wx.getLocation({
+      type: 'wgs84',
+      success (res) {
+        const latitude = res.latitude
+        const longitude = res.longitude
+        //你地址解析
+        qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: latitude,
+            longitude: longitude
+          },
+          success: function (res2) {
+            let province = res2.result.address_component.province
+            let city = res2.result.address_component.city
+            let district = res2.result.address_component.district
+            getProvinceCityArea({
+              province: province,
+              city: city,
+              area: district
+            }).then(res3=>{
+              if(res3.code == 200){
+                self.apiCityList(res3.data.provinceid)
+                self.apiAreasList(res3.data.cityid)
+                self.setData({
+                  provinceId: res3.data.provinceid,
+                  cityId: res3.data.cityid,
+                  regionId: res3.data.areaid,
+                  titlePor: province,
+                  titleCit: city,
+                  titleReg: district
+                })
+              }else{
+                self.toast("获取地理位置失败，请手动选择省市区。")
+              }
+            })
+          },
+        });
+      }
+     })
   },
   // 第一步确认
   formSubmitOne(e) {
@@ -128,9 +181,6 @@ Page({
       return
     }else if(!formOne.dotType){
       this.toast('请选择网点类型')
-      return
-    }else if(!formOne.mechanismId){
-      this.toast('请选择所属机构')
       return
     }else if(!formOne.contractTime){
       this.toast('请选择合同到期时间')
@@ -347,7 +397,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file[0].path,
       name: 'file',
       // formData: { user: 'test' },
@@ -357,6 +407,9 @@ Page({
         storeImages.push({ ...file, url: data.data });
         that.setData({ storeImages })
       },
+      fail(err){
+        that.toast('图片上传失败！')
+      }
     })
   },
   afterReadReception(event){
@@ -364,7 +417,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },
@@ -374,6 +427,9 @@ Page({
         receptionImage.push({ ...file, url: data.data });
         that.setData({ receptionImage })
       },
+      fail(err){
+        that.toast('图片上传失败！')
+      }
     })
   },
   afterReadHonor(event){
@@ -381,7 +437,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },
@@ -391,6 +447,9 @@ Page({
         honorImage.push({ ...file, url: data.data });
         that.setData({ honorImage })
       },
+      fail(err){
+        that.toast('图片上传失败！')
+      }
     })
   },
   afterReadTraffic(event){
@@ -398,7 +457,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },
@@ -408,6 +467,9 @@ Page({
         trafficImage.push({ ...file, url: data.data });
         that.setData({ trafficImage })
       },
+      fail(err){
+        that.toast('图片上传失败！')
+      }
     })
   },
   afterReadBusiness(event){
@@ -415,7 +477,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },
@@ -425,6 +487,9 @@ Page({
         businessImage.push({ ...file, url: data.data });
         that.setData({ businessImage })
       },
+      fail(err){
+        that.toast('图片上传失败！')
+      }
     })
   },
   afterReadConstruction(event){
@@ -432,7 +497,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },
@@ -442,6 +507,9 @@ Page({
         constructionImage.push({ ...file, url: data.data });
         that.setData({ constructionImage })
       },
+      fail(err){
+        that.toast('图片上传失败！')
+      }
     })
   },
   // 以下是删除图片
@@ -553,10 +621,27 @@ Page({
     })
     this.setData({
       provinceId: e.detail,
+      titleCit: "请选择城市",
+      titleReg: "请选择区/县",
       cityId: "",
       regionId: ""
     })
     findYuyueCityByProvinceid({provinceid: e.detail}).then(res=>{
+      const arr = []
+      res.data.map(v=>{
+        var obj = {}
+        obj.value = v.cityid
+        obj.text = v.city
+        arr.push(obj)
+      })
+      this.setData({
+        option2: arr
+      })
+    })
+  },
+  // 市数据
+  apiCityList(id){
+    findYuyueCityByProvinceid({provinceid: id}).then(res=>{
       const arr = []
       res.data.map(v=>{
         var obj = {}
@@ -580,9 +665,25 @@ Page({
     })
     this.setData({
       cityId: e.detail,
+      titleReg: "请选择区/县",
       regionId: ""
     })
     findYuyueAreasByCityid({cityid: e.detail}).then(res=>{
+      const arr = []
+      res.data.map(v=>{
+        var obj = {}
+        obj.value = v.areaid
+        obj.text = v.area
+        arr.push(obj)
+      })
+      this.setData({
+        option3: arr
+      })
+    })
+  },
+  // 区数据
+  apiAreasList(id){
+    findYuyueAreasByCityid({cityid: id}).then(res=>{
       const arr = []
       res.data.map(v=>{
         var obj = {}

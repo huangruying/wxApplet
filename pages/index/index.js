@@ -66,7 +66,7 @@ Page({
     // console.log(res)
     if(res.data && res.code == 200){
       res.data.map(v=>{
-        v.mobile = v.mobile.slice(0, 3) + "****" + v.mobile.substr(-4, 4)
+        v.storePhone = v.storePhone.slice(0, 3) + "****" + v.storePhone.substr(-4, 4)
       })
       let dataL = this.data.dataList
       this.setData({
@@ -127,6 +127,8 @@ Page({
     })
     this.setData({
       provinceId: e.detail,
+      titleCit: "请选择城市",
+      titleReg: "请选择区/县",
       cityId: "",
       regionId: ""
     })
@@ -154,6 +156,7 @@ Page({
     })
     this.setData({
       cityId: e.detail,
+      titleReg: "请选择区/县",
       regionId: ""
     })
     findYuyueAreasByCityid({cityid: e.detail}).then(res=>{

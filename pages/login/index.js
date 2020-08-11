@@ -1,6 +1,7 @@
 // pages/login/login.js
 import { marketingLogin } from '../../api/login'
-import { baseUrl } from '../../utils/myAxios'  
+import { baseUrl } from '../../utils/myAxios' 
+var app = getApp(); 
 Page({
 
   /**
@@ -64,9 +65,10 @@ Page({
   // 获取图形码
   async getImg(){
     // const res = await codoYzm({openid: this.data.openId})
+    console.log(app.globalData.baseUrl  + "/marketing/login/generateCodeImg" + "?date=" +new Date().valueOf() + "&openid=" + this.data.openId)
     this.setData({
-      url: baseUrl  + "/marketing/login/generateCodeImg" + "?date=" +new Date().valueOf() + "&openid=" + this.data.openId
-      // url: baseUrl  + "/marketing/login/generateCodeImg" + "?date=" +new Date().valueOf()
+      url: app.globalData.baseUrl  + "/marketing/login/generateCodeImg" + "?date=" +new Date().valueOf() + "&openid=" + this.data.openId
+      // url: app.globalData.baseUrl  + "/marketing/login/generateCodeImg" + "?date=" +new Date().valueOf()
     })
     // this.onLoad()
   },

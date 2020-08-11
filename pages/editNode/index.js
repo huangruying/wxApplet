@@ -3,6 +3,7 @@ import { findYuyueProvinces, findYuyueCityByProvinceid, findYuyueAreasByCityid }
 import { findMechanismName, findCarwashTypesInfos, saveDot , getDotById , updateDot } from '../../api/newlyNode'
 import formatTime from '../../utils/formatTime'
 import { baseUrl } from '../../utils/myAxios'
+var app = getApp();
 Page({
   data: {
     id: "",
@@ -137,9 +138,6 @@ Page({
     }else if(!formOne.dotType){
       this.toast('请选择网点类型')
       return
-    }else if(!formOne.mechanismId){
-      this.toast('请选择所属机构')
-      return
     }else if(!formOne.contractTime){
       this.toast('请选择合同到期时间')
       return
@@ -262,6 +260,8 @@ Page({
           icon: 'success',
           duration: 2000
         })
+      }else{
+        this.toast(res.msg)
       }
     }).catch(err=>{
       this.setData({
@@ -524,7 +524,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file[0].path,
       name: 'file',
       // formData: { user: 'test' },
@@ -542,7 +542,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },
@@ -560,7 +560,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },
@@ -577,7 +577,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },
@@ -594,7 +594,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },
@@ -611,7 +611,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },

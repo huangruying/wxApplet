@@ -1,6 +1,7 @@
 // 项目的根路径
-export const baseUrl = 'https://mpmt.yuyuetrip.com.cn/wash';
-// myAxios 函数，params 发请求时传入的参数 fsdf
+// export const baseUrl = 'https://mpmt.yuyuetrip.com.cn/wash';
+export const baseUrl = 'http://192.168.0.160:8189/yuyuetrip/wash';
+// myAxios 函数，params 发请求时传入的参数
 export const myAxios = (params) => {
     // 判断参数的 url 是否有 /login/ 路径，如果没有，就在请求的时候，给请求头添加 token
     if (!(params.url.indexOf('/login/') !== -1)) {
@@ -20,7 +21,7 @@ export const myAxios = (params) => {
             return new Promise(() => {})
         }
     }
-    // 退出登录，后台的傻子逻辑，需要在请求头带token退出，日后复用代码记得删除
+    // 退出登录，需要在请求头带token退出，日后复用代码记得删除
     if(params.url.indexOf('/marketingLogOut') !== -1){
          //  定义一个请求头
          params.header = {}
@@ -71,7 +72,7 @@ export const myAxios = (params) => {
             // 完成 - 不管成功还是失败都触发
             complete: () => {
                 // 隐藏提示框
-                wx.hideLoading();
+                wx.hideLoading()
                 // 停止当前页面的页面的下拉刷新
                 wx.stopPullDownRefresh()
                 // 请求完毕，关闭导航栏小菊花

@@ -23,12 +23,12 @@
   </view>
   <view class="tabs">
    <view>网点简称</view>
-   <view>客服电话</view>
+   <view>店长/经理手机号</view>
    <view>地址</view>
   </view>
   <view class="tabs_content {{ item.status == 0? 'statusColor': ''}}" wx:for="{{ dataList }}" wx:key="dotCode" bindtap="clickNode" data-id="{{ item.id }}" data-dotCode="{{ item.dotCode }}">
      <view>{{ item.dotAbbreviation }}</view>
-     <view>{{ item.mobile }}</view>
+     <view>{{ item.storePhone }}</view>
      <view><view>{{ item.province + item.city + item.region }}</view> <icon class="iconfont icon-arrowRight-fill"></icon></view>
   </view>
   <view wx:if="{{ loading }}" class="tabs_content node_data">

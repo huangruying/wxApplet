@@ -39,3 +39,11 @@ export function updateDot(params) {
     data: params
   })
 }
+
+export function getProvinceCityArea(params) {
+  return myAxios({
+    url: '/marketing/getProvinceCityArea',
+    method: 'get',
+    data: params
+  })
+}

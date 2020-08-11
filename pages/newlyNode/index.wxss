@@ -1,6 +1,6 @@
 /* pages/newlyNode/index.wxss */
 .van-uploader__preview-image{
-  width: 312rpx !important;
+  width: 315rpx !important;
   height: 193rpx !important;
 }
 .new_title{

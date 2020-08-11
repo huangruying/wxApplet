@@ -11,6 +11,7 @@ App({
     // })
   },
   globalData: {
+    baseUrl: "https://mpmt.yuyuetrip.com.cn/wash"
     // userInfo: null
   }
 })

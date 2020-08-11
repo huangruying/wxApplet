@@ -2,6 +2,7 @@
 import Dialog from '@vant/weapp/dialog/dialog';
 import { marketingLogOut , editYyUser } from '../../api/user'
 import { baseUrl } from '../../utils/myAxios'
+var app = getApp();
 Page({
 
   /**
@@ -21,6 +22,15 @@ Page({
     let mobile = wx.getStorageSync('mobile')
     let username = wx.getStorageSync('username')
     var tis = this
+    if(!pic){
+      this.setData({
+        userimg: 'https://dot-bucket.oss-cn-shenzhen.aliyuncs.com/static/img/WechatIMG308.jpeg'
+      })
+    }else{
+      this.setData({
+        userimg: pic,
+      })
+    }
     wx.login({
       success (res) {
         if (res.code) {
@@ -37,7 +47,6 @@ Page({
       }
     })
     this.setData({
-      userimg: pic,
       id: id,
       mobile: mobile,
       username: username
@@ -156,7 +165,7 @@ Page({
     const that = this
     // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
     wx.uploadFile({
-      url: baseUrl + '/marketing/dotOssUpload', 
+      url: app.globalData.baseUrl + '/marketing/dotOssUpload', 
       filePath: file.path,
       name: 'file',
       // formData: { user: 'test' },
